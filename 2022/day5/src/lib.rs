@@ -3,8 +3,8 @@ pub fn parse_input() -> (Vec<Instruction>, Vec<Vec<char>>) {
     let parts = data.split("\n\n").collect::<Vec<_>>();
 
     let instructions = parts[1]
-        .split("\n")
-        .map(|s| Instruction::from(s))
+        .split('\n')
+        .map(Instruction::from)
         .collect::<Vec<Instruction>>();
 
     let mut stacks: Vec<Vec<char>> = Vec::new();
@@ -16,8 +16,7 @@ pub fn parse_input() -> (Vec<Instruction>, Vec<Vec<char>>) {
             .filter(|(_, ch)| !ch.is_ascii_whitespace())
             .for_each(|(i, ch)| {
                 if i >= stacks.len() {
-                    let mut crates_vec = Vec::new();
-                    crates_vec.push(ch);
+                    let crates_vec = vec![ch];
                     stacks.push(crates_vec)
                 } else {
                     stacks[i].push(ch);
@@ -57,26 +56,18 @@ pub struct Instruction {
 
 impl From<&str> for Instruction {
     fn from(s: &str) -> Self {
-        let iter = s.split(" ");
-        let mv = iter
-            .to_owned()
-            .skip(1)
-            .next()
-            .unwrap()
-            .parse::<usize>()
-            .unwrap();
+        let iter = s.split(' ');
+        let mv = iter.to_owned().nth(1).unwrap().parse::<usize>().unwrap();
         let from = iter
             .to_owned()
-            .skip(3)
-            .next()
+            .nth(3)
             .unwrap()
             .parse::<usize>()
             .unwrap()
             .to_owned();
         let to = iter
             .to_owned()
-            .skip(5)
-            .next()
+            .nth(5)
             .unwrap()
             .parse::<usize>()
             .unwrap()
