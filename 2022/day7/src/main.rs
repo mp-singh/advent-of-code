@@ -1,4 +1,4 @@
-use day6::{parse_input, part1, part2};
+use day7::{parse_input, part1, part2};
 
 fn main() {
     let input = parse_input();
