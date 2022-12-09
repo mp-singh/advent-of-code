@@ -4,14 +4,14 @@ pub fn parse_input() -> String {
     include_str!("../input.txt").trim_end().to_string()
 }
 
-pub struct Forest {
+struct Forest {
     trees: Vec<Vec<i32>>,
     width: usize,
     height: usize,
 }
 
 impl Forest {
-    pub fn new(input: &str) -> Self {
+    fn new(input: &str) -> Self {
         Self {
             trees: input
                 .lines()
