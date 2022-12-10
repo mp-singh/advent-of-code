@@ -1,9 +1,9 @@
 pub fn parse_input() -> Vec<(OponentsHand, MyHand)> {
     let input_str = include_str!("../input.txt");
     input_str
-        .split("\n")
+        .split('\n')
         .map(|line| {
-            let mut iter = line.split(" ");
+            let mut iter = line.split(' ');
             let ps1 = iter.next().unwrap();
             let ps2 = iter.next().unwrap();
             (OponentsHand::from(ps1), MyHand::from(ps2))

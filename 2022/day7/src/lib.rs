@@ -28,7 +28,7 @@ fn create_dir_map(input: &str) -> HashMap<String, i32> {
     let mut path: Vec<&str> = Vec::new();
     let mut size_map: HashMap<String, i32> = HashMap::new();
     for line in input.lines() {
-        let word = line.split(" ").collect::<Vec<&str>>();
+        let word = line.split(' ').collect::<Vec<&str>>();
         if word[1] == "cd" {
             if word[2] == ".." {
                 path.pop();
@@ -39,7 +39,7 @@ fn create_dir_map(input: &str) -> HashMap<String, i32> {
             continue;
         } else {
             for i in 1..path.len() + 1 {
-                let key = format!("{}", (&path[..i].join("/")).clone());
+                let key = path[..i].join("/").clone().to_string();
                 if size_map.contains_key(&key) {
                     size_map.insert(
                         key.clone(),

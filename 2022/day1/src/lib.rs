@@ -4,18 +4,18 @@ pub fn parse_input() -> Vec<Vec<i32>> {
         .split("\n\n")
         .map(|rations| {
             rations
-                .split("\n")
+                .split('\n')
                 .map(|ration| ration.parse().unwrap())
                 .collect()
         })
         .collect()
 }
 
-pub fn part1(arr: &Vec<Vec<i32>>) -> i32 {
+pub fn part1(arr: &[Vec<i32>]) -> i32 {
     arr.iter().map(|ration| ration.iter().sum()).max().unwrap()
 }
 
-pub fn part2(arr: &Vec<Vec<i32>>) -> i32 {
+pub fn part2(arr: &[Vec<i32>]) -> i32 {
     let mut sum: Vec<i32> = arr.iter().map(|ration| ration.iter().sum()).collect();
     sum.sort();
     sum.reverse();

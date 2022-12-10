@@ -53,8 +53,7 @@ pub fn part2(arr: &[&str]) -> i32 {
 }
 
 pub fn part1_fast(data: &str) -> usize {
-    let input: Vec<(usize, usize, usize, usize)> = data
-        .lines()
+    data.lines()
         .map(|l| {
             l.split(['-', ','])
                 .map(|v| v.parse::<usize>().unwrap())
@@ -62,13 +61,11 @@ pub fn part1_fast(data: &str) -> usize {
                 .unwrap()
         })
         .filter(|(s1, e1, s2, e2)| (s1 <= s2 && e1 >= e2) || (s2 <= s1 && e2 >= e1))
-        .collect();
-    input.len()
+        .count()
 }
 
 pub fn part2_fast(data: &str) -> usize {
-    let input: Vec<(usize, usize, usize, usize)> = data
-        .lines()
+    data.lines()
         .map(|l| {
             l.split(&['-', ','][..])
                 .map(|v| v.parse::<usize>().unwrap())
@@ -76,6 +73,5 @@ pub fn part2_fast(data: &str) -> usize {
                 .unwrap()
         })
         .filter(|(s1, e1, s2, e2)| (s1 <= s2 && e1 >= s2) || (s2 <= s1 && e2 >= s1))
-        .collect();
-    input.len()
+        .count()
 }
